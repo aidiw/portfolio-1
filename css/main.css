@@ -1,0 +1,267 @@
+@charset "utf-8";
+/* main.css - 메인페이지 CSS */
+
+/*파일 merging(합치기)*/
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+@import url(gridSetFlex.css);
+@import url(gridView.css);
+
+/* 메인페이지 디자인 전용 */
+
+/* 상단헤더영역 */
+.top{
+	position: fixed;
+	width: 100%;
+	height: 94px;
+	background-color: rgba(0, 0, 0, 0.69);
+}
+.header_logo{
+	position: absolute;
+	top: 24px;
+	left: 94px;
+	
+}
+.header_logo img{
+	height: 50px;
+}
+
+.gnb{
+	display: flex;
+	position: absolute;
+	right: 60px;
+	top: 20px;
+}
+.gnb li{
+	padding-left: 40px;
+}
+.gnb li:hover a{
+	color:yellow;
+}
+.gnb li a{
+	color: #fff;
+	font-weight: bold;
+}
+
+
+
+
+
+/* 메인비쥬얼 영역 */
+.main_visual_wrap{
+}
+.cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	display: flex;
+    z-index: 2;
+}
+.cover li{
+    flex: 1;
+}
+.main_visual{
+    position: relative;
+	display: flex;
+    width: 100%;
+}
+.main_visual li{
+    position: absolute;
+    width: 20%;
+	height: 940px;
+    transition: all .8s ease-in-out;
+}
+.main_bg1{
+    left: 0%;
+	background: url(../images/common/main_bg1.jpg) repeat-x 0/auto 102%; 
+}
+.main_bg2{
+    left: 20%;
+	background: url(../images/common/main_bg2.jpg) repeat-x 0/auto 102%; 
+}
+.main_bg3{
+    left: 40%;
+	background: url(../images/common/main_bg3.jpg) repeat-x 0/auto 102%; 
+}
+.main_bg4{
+    left: 60%;
+	background: url(../images/common/main_bg4.jpg) repeat-x 0/auto 102%; 
+}
+.main_bg5{
+    left: 80%;
+	background: url(../images/common/main_bg5.jpg) repeat-x 0/auto 102%; 
+}
+
+
+/* 컨텐츠1 비디오영역 */
+.c1h1{
+	width: 100%;
+	height: 770px;
+	padding-top: 100px;
+}
+iframe{
+	width: 1370px;
+	height: 630px;
+	margin: 0 auto;
+}
+
+.c1h2{
+	height: 170px;
+	text-align: center;
+}
+.c1h2 h2{
+	font-size: 40px;
+	color: #111;
+}
+.c1h2 h3{
+	font-size: 30px;
+	color: #111;
+	margin-bottom: 10px;
+}
+
+.btn_with{
+	margin-left: calc(50% - 75px);
+	display: block;
+	width: 150px;
+	height: 40px;
+	background-color: #222;
+	border-radius: 20px;
+	color:#fff;
+	line-height: 40px;
+}
+
+
+/* 컨텐츠 2 */
+.cont2{/*cont2 wrap*/
+	width: 1366px;
+	height: 940px;
+	margin: 0 auto;
+	background-color: #ff0
+}
+.c2txbx_wrap{
+	padding-top: 160px;
+}
+.c2txbx{
+	width: 460px;
+	height: 294px;
+	padding-top: 55px;
+	padding-left: 30px;
+	margin-bottom: 13px;
+}
+.c2txbx h2{
+	font-size: 35px;
+	color: #222;
+	font-weight: bold;
+}
+.c2txbx p{
+	font-size: 20px;
+	color: #222;
+	font-weight: 600;
+	padding: 53px 0 84px 0;
+}
+
+.btn_gender_wrap{
+	display: flex;
+}
+.btn_man{
+	display: block;
+	text-align: center;
+	width: 105px;
+	height: 35px;
+	background-color: #ccc;
+	border-radius: 15px;
+	color:#222;
+	line-height: 35px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 86px;
+}
+.btn_woman{
+	display: block;
+	text-align: center;
+	width: 105px;
+	height: 35px;
+	background-color: #222;
+	border-radius: 15px;
+	color:#fff;
+	line-height: 35px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.c2txbx_wrap img{
+	width: 385px;
+	height: 385px;
+}
+
+
+/* 컨텐츠3 에어맥스 2090 */
+.cont3{
+	width: 1600px;
+	height: 940px;
+	margin: 0 auto;
+}
+
+.cont3_wrap{
+	padding-top: 115px;
+	display: flex;
+	
+}
+
+/*컨텐츠3 왼쪽*/
+.cont3_left{
+	width: 960px;
+}
+.left_img_wrap{
+	display: flex;
+}
+
+.cont3_img1{
+	width: 593px;
+	height: 500px;
+	margin-right: 20px;
+}
+.cont3_img2{
+	width: 320px;
+	height: 500px;
+	
+}
+
+.left_text_wrap{
+	padding-top: 30px;
+	text-align: center;
+}
+.btn_buy{
+	display: block;
+	width: 105px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #222;
+	border-radius: 20px;
+	color: #fff;
+	font-size: 20px;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+
+
+/* 컨텐츠3 오른쪽*/
+.cont3_right{
+	width: 640px;
+	padding-left: 30px;
+}
+
+.right_img_wrap{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 40px;
+}
+
+.cont3_right img{
+	padding-left: 44px;
+}
+
+
