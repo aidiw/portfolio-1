@@ -1,158 +1,325 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <title>nike Just Do It</title>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script>
-        $(function() {
-
-        }); //// jQB ////////////////////
-    </script>
+	<meta charset="UTF-8">
+	<title>스프라이트 애니메이션</title>
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+	<style>
+		html,body,ul,h1{
+			margin: 0 auto;
+			padding: 0;
+		}
+		body{
+			background-color: #8cc63e;
+		}
+		ul{
+			list-style: none;
+		}
+		/*
+		font-family: 'Gloria Hallelujah', cursive;
+        font-family: 'ZCOOL KuaiLe', cursive;
+		*/
+		
+		/*IR숨기기 이미지리플레이스먼트 (웹접근성)*/ 
+		.ir{
+			display: block;
+			width: 0;
+			height: 0;
+			overflow: hidden;
+		}
+		
+		/*타이틀*/
+		.mtit{
+			position: absolute;
+			top: 35px;
+			left: 50%;
+			transform: translateX(-50%); /*가로 중앙이동*/
+			font-family: 'Gloria Hallelujah', cursive;
+			font-size: 52px;
+			color: #fff;
+			z-index: 1;
+		}
+		
+		/*메뉴*/
+		.gnb{
+			position: absolute;
+			top: 10%;
+			left: 70%;
+			z-index: 1;
+		}
+		.gnb a{
+			color: #fff;
+			text-decoration: none;
+			font-family: 'ZCOOL KuaiLe', cursive;
+			font-size: 32px;
+			line-height: 100px;
+		}
+		/* 메뉴 오버시 */
+		.gnb a:hover{
+			color: #f00;
+			text-decoration: line-through;/*중간에 줄긋기*/
+		}
+		
+		/* TV박스 */
+		.tvset{
+			position: relative;
+			width: 1280px;
+			height: 720px;
+			background: url(images/tvset.png) no-repeat;
+			margin: 0 auto;
+		}
+		/* 스크린 */
+		.screen{
+			position: absolute;
+			top: 213px;
+			left: 450px;
+			width: 456px;
+			height: 227px;
+			background-image: url(images/street.jpg); 
+			background-repeat: repeat-x;
+			background-size: auto 100%;
+			/*세로는 다보이고 가로는 자동!*/
+			/*애니메이션(이시이지반방마)*/
+			animation: street 4s linear infinite 
+		}
+		/* 키프레임 - 스크린 배경 애니메이션 */
+		@keyframes street{
+			from{
+				background-position: 0 0;
+			}
+			to{
+				background-position: -560% 0;
+			}
+			/*위치 이동시 % 단위는 배경이미지 크기를 기준하여 잡는다. 예컨데 100%는 배경이미지 크기와 같다 */
+		}/* 키프레임 */
+		
+		/* 걷는소년 */
+		.spani1{
+			width: 92px;
+			height: 176px;
+			margin: 23px auto; 
+			background-image: url(images/spAni03.png);
+			background-size: auto 176px;
+			animation: spani1 1s steps(8) infinite
+		}
+		/*걷는소년 키프레임*/
+		@keyframes spani1{
+			from{
+				background-position-x: 0;
+			}
+			to{
+				background-position-x: -797px;
+			}
+		}/*키프레임*/
+		
+		/*마법사 */
+		.spani2{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 50px;
+			height: 72px;
+			background-image: url(images/spAni01.png);
+			animation: spani2 1s steps(10) infinite
+		}
+		/*마법사 키프레임*/
+		@keyframes spani2{
+			from{
+				background-position-x: 0;
+			}
+			to{
+				background-position-x: -500px;
+				/*가로크기와 같은값을 쓴다 (부호만 마이너스)*/
+			}
+		}/*키프레임*/
+		
+		/* 쿠키몬 */
+		.spani3{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 118px;
+			height: 118px;
+			background-image: url(images/spAni02.png);
+			animation: spani3X 1s steps(6) infinite, spani3Y 3s steps(3) infinite;
+		}
+		
+		/* 
+			x축 키프레임과 y축 키프레임을 만들고 호출한다.
+			x축은 1초간 6장면 steps(장면수) -> steps(6)
+			y축은 3초간 3라인 steps(라인수) -> steps(3)
+		*/
+		/*쿠키몬 키프레임 X축*/
+		@keyframes spani3X{
+			from{
+				background-position-x: 0;
+			}
+			to{
+				background-position-x: -710px;
+				/*가로크기와 같은값을 쓴다 (부호만 마이너스)*/
+			}
+		}/*키프레임*/
+		
+		/*쿠키몬 키프레임 X축*/
+		@keyframes spani3Y{
+			from{
+				background-position-y: 0;
+			}
+			to{
+				background-position-y: -355px;
+			}
+		}/*키프레임*/
+		
+		/* 웃는여자 */
+		.spani4{
+			position: absolute;
+			top: 10%;
+			right: 20px;
+			width: 256px;
+			height: 407px;
+			background-image: url(images/girl_frames.png);
+			border: 20px ridge #a85f15;
+			transform: scale(.5);
+			
+			animation: spani4X 1s steps(5) infinite, spani4Y 3s steps(3) infinite;
+		}
+		
+		/*웃는여자 키프레임 X축*/
+		@keyframes spani4X{
+			from{
+				background-position-x: 0;
+			}
+			to{
+				background-position-x: -1280px;
+				/*가로크기와 같은값을 쓴다 (부호만 마이너스)*/
+			}
+		}/*키프레임*/
+		
+		/*웃는여자 키프레임 X축*/
+		@keyframes spani4Y{
+			from{
+				background-position-y: 0;
+			}
+			to{
+				background-position-y: -1222px;
+			}
+		}/*키프레임*/
+		
+		/*
+		스프라이트를 이용한 애니메이션 하기
+		
+		- 원리 : 배경이미지를 이동하여 장면을 전환함
+		- 중요정보 : 전체 길이를 알아야함
+		
+		전체길이 / 장면개수 = 하나당 이동길이 
+		비례씩으로 계산함
+		
+		가로 : 세로 = 1472 : 325 = x : 176
+		x = 797.14...
+		[ 호출시 스프라이트 애니 장면별 찍는 steps를 정함 ]
+		- 장면을 찍을때 이징(가속도)은 불필요함.
+		
+		animation : 이름 시간 steps(장면수) infinite
+		
+		[ 키프레임 셋팅법 ]
+		@keyframes 키프레임명{
+			from{
+				background-position: 0 0;
+			}
+			to{
+				background-position: 가로크기 0;
+			}
+		}
+		x축 이동일 경우 x축 포지션만 변경하고
+		y축 이동일 경우 y축 포지션 값만 변경한다!
+		
+		포지션은 별도의 값인 
+		background-position-x
+		background-position-y
+		를 사용할수 있음.
+		*/
+		
+		
+		
+		
+		
+		
+		.walk{
+			position: absolute;
+			left: 50%;
+			width: 220px;
+			height: 300px;
+			background-image: url(images/pngwing.com.png);
+			background-position:  0 0;
+			animation: walk 0.4s steps(4) infinite
+		}
+		@keyframes walk{
+			from{
+				background-position-x: 0;
+			}
+			to{
+				background-position-x: -980px;
+			}
+		}
+		
+		/* 확대 애니메이션 */
+		.ani{
+			transition: all .8s;
+		}
+		.ani:hover{
+			transform: scale(3);
+		}
+		
+		
+	</style>
 </head>
-
 <body>
-    <header class="top">
-        <h1 class="header_logo">
-            <a href="#">
-                <img src="images/common/header_logo_wh.png" alt="헤더로고">
-            </a>
-        </h1>
-        <ul class="gnb">
-            <li><a href="#">회원가입 / 로그인</a></li>
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">장바구니</a></li>
-            <li><a href="#">KR ▼</a></li>
-        </ul>
-    </header>
-    <div class="main_visual_wrap">
-        <ul class="main_visual">
-            <li class="main_bg1"><a href=""></a></li>
-            <li class="main_bg2"><a href=""></a></li>
-            <li class="main_bg3"><a href=""></a></li>
-            <li class="main_bg4"><a href=""></a></li>
-            <li class="main_bg5"><a href=""></a></li>
-        </ul>
-        <ul class="cover">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-    <div class="cont1">
-        <div class="inbox" id="cont1">
-            <div class="col-12 c1h1">
-                <video src="video/nike.mp4" id="svid" muted></video>
-            </div>
-            <div class="col-12 c1h2">
-                <h2>스포츠의 힘을믿어</h2>
-                <h3>우리의 힘을믿어</h3>
-                <a href="#" class="btn_with">
-                    나이키와 함께하기
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="cont2">
-        <div class="inbox" id="cont2">
-            <div class="c2txbx_wrap">
-                <div class="c2txbx">
-                    <h2>나이키 에어맥스 2090</h2>
-                    <p>
-                        어떤스타일도 완벽하게 소화하는<br>
-                        나이키 에어맥스 2090과 함께<br>
-                        나만의 개성을 표현해보세요.<br>
-                    </p>
-                    <div class="btn_gender_wrap">
-                        <a href="#" class="btn_man">남성용</a>
-                        <a href="#" class="btn_woman">여성용</a>
-                    </div>
-                </div>
-                <a href=""><img src="images/cont2-1.jpg" alt=""></a>
-            </div>
-            <div class="c2cimg_wrap">
-                <div class="c2cimg_left">
-                    <a href="#">
-                        <img src="images/common/" alt="">
-                    </a>
-                </div>
-                <div class="c2cimg_right">
-                    사진
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="cont3">
-        <div class="cont3_wrap">
-            <div class="cont3_left">
-                <div class=left_img_wrap>
-                    <img src="images/common/cont3_1.jpg" alt="요가이미지1" class="cont3_img1">
-                    <img src="images/common/cont3_2.jpg" alt="요가이미지2" class="cont3_img2">
-                </div>
-                <div class="left_text_wrap">
-                    <h2>일상을 함께하는 요가스타일링</h2>
-                    <p>
-                        일상과 요가. 언제 어디서나 최상의 편안함을 선사하는요가 스타일링을소개합니다.<br>
-                        나이키가 제안하는 다양한 룩과 함께 나만의 동작을 완성하세요.
-                    </p>
-                    <a href="#" class="btn_buy">구매하기</a>
-                </div>
-            </div>
-            <div class="cont3_right">
-                <div class="right_img_wrap">
-                    <img src="images/common/cont3_3.jpg" alt="요가이미지3">
-                    <img src="images/common/cont3_4.jpg" alt="요가이미지4">
-                </div>
-                <img src="images/common/cont3_5.jpg" alt="">
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    <footer class="info">
-        <div class="inbox" id="info">
-            <ul class="fbx">
-
-            </ul>
-        </div>
-    </footer>
-
-
-
-    <!--레이아웃일반
-    1. 2중 박스구조로 큰 레이아웃 구분으로 div를 작성
-    2. 각 파티션을 col- 클래스로 구현
-    3. 각 파트별 타이틀을 달아줌
-    4. 파티션을 ul>li로 구성함
--->
-
-
-
-    <!--그리드뷰-->
-    <ul class="grid">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-
-
-
-
-</body></html>
+	<!--1. 제목-->
+	<h1 class="mtit">John`s Television</h1>
+	
+	<!--2. 메뉴-->
+	<nav class="gnb">
+		<ul>
+			<li><a href="#">Watching</a></li>
+			<li><a href="#">Eating</a></li>
+			<li><a href="#">Listening</a></li>
+			<li><a href="#">Sleeping</a></li>
+		</ul>
+	</nav>
+	
+	<!--3. TV박스-->
+	<section class="tvset">
+		<!--스크린박스-->
+		<div class="screen">
+			<!--1. 걷는소년-->
+			<div class="ani spani1">
+				<span class="ir">걷는소년</span><!--이건 설명임. ir은 설명없애기 클래스-->
+			</div>
+			<!--2. 마법사-->
+			<div class="ani spani2">
+				<span class="ir">마법사</span><!--이건 설명임. ir은 설명없애기 클래스-->
+			</div>
+			<!--3. 쿠키몬-->
+			<div class="ani spani3">
+				<span class="ir">쿠키몬</span><!--이건 설명임. ir은 설명없애기 클래스-->
+			</div>
+		</div>
+	</section>
+	<!--4. 웃는여자-->
+	<div class="ani spani4">
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="ani walk"></div>
+	
+	
+	
+	
+</body>
+</html>
